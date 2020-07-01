@@ -15,5 +15,10 @@
     ],
     "require": {
         "uwebpro/substring": "^1.0"
+    },
+    "autoload": {
+        "classmap": [
+            "src"
+        ]
     }
 }
