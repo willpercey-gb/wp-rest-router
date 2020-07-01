@@ -1,0 +1,5 @@
+{
+    "require": {
+        "uwebpro/substring": "^1.0"
+    }
+}
