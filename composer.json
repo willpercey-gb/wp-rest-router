@@ -1,4 +1,18 @@
 {
+    "name": "uwebpro/wp-rest-router",
+    "type": "library",
+    "description": "An easy to use router for WordPress' Rest API",
+    "keywords": ["wordpress","WordPress", "blog", "uwebpro", "rest", "router"],
+    "homepage": "https://github.com/willpercey-gb/wp-rest-router",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Will Percey",
+            "email": "info@uwebpro.com",
+            "homepage": "https://uwebpro.com/",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "uwebpro/substring": "^1.0"
     }
