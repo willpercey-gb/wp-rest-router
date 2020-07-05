@@ -45,7 +45,7 @@ class Router implements Routing
         add_action('rest_api_init', function () {
             foreach ($this->actions as $action) {
                 if (!$action instanceof RouteAction) {
-                    throw new BadMethodCallException('Actions may only be registered by ' . RouteAction::class);
+                    throw new \BadMethodCallException('Actions may only be registered by ' . RouteAction::class);
                 }
 
                 $action = $this->convertVariables($action);

@@ -15,7 +15,6 @@
     ],
     "require": {
         "uwebpro/substring": "^1.0",
-        "ext-http": "*",
         "ext-mbstring": "*"
     },
     "autoload": {
