@@ -40,7 +40,7 @@ class Router implements Routing
         return $this->request('POST', $route);
     }
 
-    public function register(): bool
+    public function register(): void
     {
         add_action('rest_api_init', function () {
             foreach ($this->actions as $action) {
@@ -63,6 +63,7 @@ class Router implements Routing
         if (mb_stripos($action->route, '{') !== false && mb_stripos($action->route, '}') !== false) {
             $variable = $this->substring($action->route, '{', '}');
             $find = '{' . $variable . '}';
+//            $replace = '(?P<' . $variable . '>\d+)';
             $replace = '(?P<' . $variable . '>\d+)';
             $action->route = str_replace($find, $replace, $action->route);
         }
