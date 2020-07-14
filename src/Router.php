@@ -61,13 +61,8 @@ class Router implements Routing
     {
         if (mb_stripos($action->route, '{') !== false && mb_stripos($action->route, '}') !== false) {
             $variable = $this->substring($action->route, '{', '}');
-            if (is_numeric($variable)) {
-                $type = '\d+';
-            } else {
-                $type = '\s+';
-            }
             $find = '{' . $variable . '}';
-            $replace = '(?P<' . $variable . '>' . $type . ')';
+            $replace = '(?P<' . $variable . '>)';
             $action->route = str_replace($find, $replace, $action->route);
         }
         return $action;
