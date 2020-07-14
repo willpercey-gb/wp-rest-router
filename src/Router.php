@@ -2,7 +2,6 @@
 
 namespace UWebPro\WordPress\Rest;
 
-use http\Exception\BadMethodCallException;
 use UWebPro\Str\SubstringTrait;
 use UWebPro\WordPress\Rest\Structure\Routing;
 
@@ -62,9 +61,13 @@ class Router implements Routing
     {
         if (mb_stripos($action->route, '{') !== false && mb_stripos($action->route, '}') !== false) {
             $variable = $this->substring($action->route, '{', '}');
+            if (is_numeric($variable)) {
+                $type = '\d+';
+            } else {
+                $type = '\s+';
+            }
             $find = '{' . $variable . '}';
-//            $replace = '(?P<' . $variable . '>\d+)';
-            $replace = '(?P<' . $variable . '>\d+)';
+            $replace = '(?P<' . $variable . '>' . $type . ')';
             $action->route = str_replace($find, $replace, $action->route);
         }
         return $action;
