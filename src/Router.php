@@ -22,7 +22,7 @@ class Router implements Routing
         self::$instance = $this;
     }
 
-    public function request(string $method, string $route, \Closure $callback = null): ?RouteAction
+    public function request(string $method, string $route, $callback = null): ?RouteAction
     {
         if ($callback) {
             $action = new RouteAction($method, $route);
@@ -36,12 +36,12 @@ class Router implements Routing
     }
 
 
-    public function get(string $route, \Closure $callback = null): RouteAction
+    public function get(string $route, $callback = null): ?RouteAction
     {
         return $this->request('GET', $route, $callback);
     }
 
-    public function post(string $route, \Closure $callback = null): RouteAction
+    public function post(string $route, $callback = null): ?RouteAction
     {
         return $this->request('POST', $route, $callback);
     }
