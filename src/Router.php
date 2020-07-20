@@ -59,7 +59,7 @@ class Router implements Routing
 
     private function convertVariables($action): RouteAction
     {
-        if (mb_stripos($action->route, '{') !== false && mb_stripos($action->route, '}') !== false) {
+        while (mb_stripos($action->route, '{') !== false && mb_stripos($action->route, '}') !== false) {
             $variable = $this->substring($action->route, '{', '}');
             $find = '{' . $variable . '}';
             $replace = '(?P<' . $variable . '>\w+)';
