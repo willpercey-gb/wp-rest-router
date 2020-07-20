@@ -70,10 +70,12 @@ class Router implements Routing
             $optional = $this->substring($action->route, '{?');
             $variable = $this->substring($action->route, '{', '}');
             $find = '{' . $variable . '}';
-            $replace = '(?P<' . $variable . '>\w+)';
+            $replace = '(?P<' . $variable . '>[^/]+)';
+
             if ($optional) {
                 $replace = '(?:/' . $replace . ')?';
             }
+
             $action->route = str_replace($find, $replace, $action->route);
         }
         return $action;
