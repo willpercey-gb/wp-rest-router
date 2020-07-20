@@ -74,7 +74,7 @@ class Router implements Routing
             $replace = '(?P<' . $variable . '>[^/]+)';
 
             if ($optional) {
-                $replace = '(?:/' . $replace . ')?';
+                $replace = '(?:(?P<'.$optional.'>[^/]+)?)';
             }
             $route = str_replace($find, $replace, $route);
         }
