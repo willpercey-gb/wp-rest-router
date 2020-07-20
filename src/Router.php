@@ -2,12 +2,12 @@
 
 namespace UWebPro\WordPress\Rest;
 
-use UWebPro\Str\SubstringTrait;
+use UWebPro\Str\Substring;
 use UWebPro\WordPress\Rest\Structure\Routing;
 
 class Router implements Routing
 {
-    use SubstringTrait;
+    use Substring;
 
     private static $instance;
 
@@ -22,21 +22,28 @@ class Router implements Routing
         self::$instance = $this;
     }
 
-    public function request(string $method, string $route): RouteAction
+    public function request(string $method, string $route, \Closure $callback = null): ?RouteAction
     {
-        $this->actions[] = new RouteAction($method, $route);
-        return end($this->actions);
+        if ($callback) {
+            $action = new RouteAction($method, $route);
+            $action->uses($callback);
+            $this->actions[] = $action;
+            return null;
+        }
+        $action = new RouteAction($method, $route);
+        $this->actions[] = $action;
+        return $action;
     }
 
 
-    public function get(string $route): RouteAction
+    public function get(string $route, \Closure $callback = null): RouteAction
     {
-        return $this->request('GET', $route);
+        return $this->request('GET', $route, $callback);
     }
 
-    public function post(string $route): RouteAction
+    public function post(string $route, \Closure $callback = null): RouteAction
     {
-        return $this->request('POST', $route);
+        return $this->request('POST', $route, $callback);
     }
 
     public function register(): void
