@@ -62,7 +62,7 @@ class Router implements Routing
         while (mb_stripos($action->route, '{') !== false && mb_stripos($action->route, '}') !== false) {
             $variable = $this->substring($action->route, '{', '}');
             $find = '{' . $variable . '}';
-            $replace = '(?P<' . $variable . '>\w+)';
+            $replace = '(?P<' . $variable . '>[^/]+)';
             $action->route = str_replace($find, $replace, $action->route);
         }
         return $action;
