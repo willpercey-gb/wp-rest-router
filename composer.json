@@ -14,8 +14,8 @@
         }
     ],
     "require": {
-        "uwebpro/substring": "^2.0",
-        "ext-mbstring": "*"
+        "php": "^8.0",
+        "uwebpro/substring": "^v3.0"
     },
     "autoload": {
         "classmap": [
