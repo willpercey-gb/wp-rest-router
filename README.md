@@ -27,10 +27,10 @@ $router->get('/endpoint/{parameter_one}/{?optional_parameter}')->uses($callback)
 
 //Usage
 
-$router->get('navigation')->uses(function()
+$router->get('/navigation')->uses(function()
 {
     // processing 
-    return new WP_REST_RESPONSE(['data here']); // response;
+    return new \WP_REST_Response(['data here']); // response;
 });
 
 ```
